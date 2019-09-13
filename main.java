@@ -7,6 +7,12 @@ public class main
     Deck deck = createDeck();
     printDeck(deck);
     deal(deck, player1, player2);
+    player1.organizeDeck();
+    System.out.println("player one");
+    printDeck(player1);
+    player2.organizeDeck();
+    System.out.println("player two");
+    printDeck(player2);
     }
 	
 	
