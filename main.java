@@ -4,13 +4,20 @@ public class main
 	{
     Deck deck = createDeck();
     printDeck(deck);
+    deal();
     }
+	
+	
+	
 	//Prints the cards in the deck, in order
 	public static void printDeck(Deck deck) {
 		for(int i = 0; i<deck.getLength(); i++) {
 	    	System.out.println(deck.getCard(i));
 	    }
 	}
+	
+	
+	
 	//Creates and shuffles a standard 52 card deck
 	public static Deck createDeck() {
 		Deck deck = new Deck();
