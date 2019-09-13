@@ -10,6 +10,9 @@ public class main
             deck.addCard(temp);
         }
     }
-    System.out.println(deck);
+    deck.shuffle();
+    for(int i = 0; i<deck.getLength(); i++) {
+    	System.out.println(deck.getCard(i));
+    }
     }
 }

@@ -1,11 +1,25 @@
+import java.util.ArrayList;
+import java.lang.Math;
 public class Deck
 { 
-    Card [] cards = {};
+    ArrayList<Card> cards = new ArrayList<Card>();
 	public Deck()
 	{
-    this.cards = cards;
     }
     public void addCard(Card card){
     cards.add(card);
+    }
+    public Card getCard(int index) {
+    	return cards.get(index);
+    }
+    public int getLength() {
+    	return cards.size();
+    }
+    public void shuffle() {
+    	for(int i = 0; i< (int) (Math.random()*10+104); i++) {
+    		int index = (int) (Math.random()*52);
+    		cards.add(cards.get(index));
+    		cards.remove(index);
+    	}
     }
     }
