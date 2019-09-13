@@ -2,9 +2,11 @@ public class main
 { 
 	public static void main(String [] args)
 	{
+	Deck player1 = new Deck();
+	Deck player2 = new Deck();
     Deck deck = createDeck();
     printDeck(deck);
-    deal();
+    deal(deck, player1, player2);
     }
 	
 	
@@ -30,5 +32,12 @@ public class main
 	    }
 	    deck.shuffle();
 	    return deck;
+	}
+	
+	public static void deal(Deck deck, Deck player1, Deck player2) {
+		for(int i = 0; i<7; i++) {
+			deck.dealCard(player1);
+			deck.dealCard(player2);
+		}
 	}
 }
