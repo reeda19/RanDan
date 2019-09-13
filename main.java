@@ -5,6 +5,7 @@ public class main
 	Deck player1 = new Deck();
 	Deck player2 = new Deck();
     Deck deck = createDeck();
+    Deck center = new Deck();
     printDeck(deck);
     deal(deck, player1, player2);
     player1.organizeDeck();
@@ -13,6 +14,9 @@ public class main
     player2.organizeDeck();
     System.out.println("player two");
     printDeck(player2);
+    deck.dealCard(center);
+    System.out.println("The first card dealt is the "+center.getCard(0).toString());
+    System.out.println("The total count for the center is "+center.getTotal());
     }
 	
 	

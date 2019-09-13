@@ -61,4 +61,21 @@ public class Deck
     	cards.set(index1, cards.get(index2));
     	cards.set(index2, temp);
     }
+    
+    public int getTotal() {
+    	int total = 0;
+    	for(int i = 0; i<cards.size(); i++) {
+    		Card card = cards.get(i);
+    		if(card.rank>10) {
+    			total+=10;
+    		}
+    		else {
+    			total+=card.rank;
+    		}
+    	}
+       	while(total>52) {
+    		total-=52;
+    	}
+    	return total;
+    }
     }
