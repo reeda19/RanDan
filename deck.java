@@ -1,7 +1,8 @@
 public class Deck
 { 
-	public Deck()
+    Card [] cards;
+	public Deck(Card [] cards)
 	{
-
+    this.cards = cards;
     }
     }
