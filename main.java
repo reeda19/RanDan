@@ -1,3 +1,11 @@
+//TODO
+//Add working functionality for aces
+//Add ability to win
+//Begin cpu
+
+
+
+
 import java.util.Scanner;
 public class main
 { 	static Scanner input = new Scanner(System.in);
@@ -7,17 +15,9 @@ public class main
 	Deck player2 = new Deck();
     Deck deck = createDeck();
     Deck center = new Deck();
-    printDeck(deck);
     deal(deck, player1, player2);
-    player1.organizeDeck();
-    System.out.println("player one");
-    printDeck(player1);
-    player2.organizeDeck();
-    System.out.println("player two");
-    printDeck(player2);
     deck.dealCard(center, 0);
     System.out.println("The first card dealt is the "+center.getCard(0).toString());
-    System.out.println("The total count for the center is "+center.getTotal());
     int player1_wins=0;
     int player2_wins=0;
     
@@ -80,7 +80,7 @@ public class main
 		
 		//Print players cards for viewing
 		System.out.println("Your cards are:" );
-		printDeck(player);
+		System.out.println(player.toArrayList());
 		System.out.println("What is your move? Select a card (0-6)");
 		int num = input.nextInt();
 		player.dealCard(center, num);

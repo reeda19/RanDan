@@ -78,4 +78,9 @@ public class Deck
     	}
     	return total;
     }
+    
+    //returns array list as opposed to string so indices are easier to see
+    public ArrayList toArrayList() {
+    	return cards;
+    }
     }
