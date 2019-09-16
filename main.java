@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class main
-{ 
+{ 	static Scanner input = new Scanner(System.in);
 	public static void main(String [] args)
 	{
 	Deck player1 = new Deck();
@@ -15,7 +15,7 @@ public class main
     player2.organizeDeck();
     System.out.println("player two");
     printDeck(player2);
-    deck.dealCard(center);
+    deck.dealCard(center, 0);
     System.out.println("The first card dealt is the "+center.getCard(0).toString());
     System.out.println("The total count for the center is "+center.getTotal());
     int player1_wins=0;
@@ -23,9 +23,13 @@ public class main
     
     //first to 3 wins
     while (player1_wins<3 && player2_wins<3) {
-    	playerturn(player1, center);
+    	System.out.println("Player 1 turn");
+    	playerturn(player1, center, deck);
     	System.out.println("The total count for the center is "+center.getTotal());
+    	System.out.println("Player 2 turn");
+    	playerturn(player2, center, deck);
     }
+	input.close();
     }
 	
 	
@@ -55,15 +59,21 @@ public class main
 	
 	public static void deal(Deck deck, Deck player1, Deck player2) {
 		for(int i = 0; i<7; i++) {
-			deck.dealCard(player1);
-			deck.dealCard(player2);
+			deck.dealCard(player1, 0);
+			deck.dealCard(player2, 0);
 		}
 	}
 	
-	public static void playerturn(Deck player, Deck center) {
-		Scanner input = new Scanner(System.in);
-		System.out.println("What is your move? Select a card (0-7)");
+	public static void playerturn(Deck player, Deck center, Deck deck) {
+
+		
+		//Print players cards for viewing
+		System.out.println("Your cards are:" );
+		printDeck(player);
+		System.out.println("What is your move? Select a card (0-6)");
 		int num = input.nextInt();
-		player.dealCard(center);
+		player.dealCard(center, num);
+		deck.dealCard(player,  0);
+	
 	}
 }

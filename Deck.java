@@ -36,9 +36,9 @@ public class Deck
     }
     
     //Removes 0th card from deck and adds it the inputed hand
-    public void dealCard(Deck hand) {
-    	hand.addCard(cards.get(0));
-    	cards.remove(0);
+    public void dealCard(Deck hand, int index) {
+    	hand.addCard(cards.get(index));
+    	cards.remove(index);
     }
     
     
