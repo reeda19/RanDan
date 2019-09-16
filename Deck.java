@@ -73,7 +73,7 @@ public class Deck
     			total+=card.rank;
     		}
     	}
-       	while(total>52) {
+       	while(total>=52) {
     		total-=52;
     	}
     	return total;

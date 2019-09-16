@@ -1,6 +1,5 @@
 //TODO
 //Add working functionality for aces
-//Add ability to win
 //Begin cpu
 
 
