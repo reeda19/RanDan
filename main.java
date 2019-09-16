@@ -25,9 +25,18 @@ public class main
     while (player1_wins<3 && player2_wins<3) {
     	System.out.println("Player 1 turn");
     	playerturn(player1, center, deck);
-    	System.out.println("The total count for the center is "+center.getTotal());
+    	if(center.getTotal()==0){
+    		player1_wins++;
+    		System.out.println("Player 1 got a point!");
+    		System.out.println("It is now "+player1_wins + " to " +player2_wins);
+    	}
     	System.out.println("Player 2 turn");
     	playerturn(player2, center, deck);
+    	if(center.getTotal()==0){
+    		player2_wins++;
+    		System.out.println("Player 2 got a point!");
+    		System.out.println("It is now "+player1_wins + " to " +player2_wins);
+    	}
     }
 	input.close();
     }
@@ -65,7 +74,9 @@ public class main
 	}
 	
 	public static void playerturn(Deck player, Deck center, Deck deck) {
-
+		player.organizeDeck();
+		
+    	System.out.println("The total count for the center is "+center.getTotal());
 		
 		//Print players cards for viewing
 		System.out.println("Your cards are:" );
@@ -74,6 +85,6 @@ public class main
 		int num = input.nextInt();
 		player.dealCard(center, num);
 		deck.dealCard(player,  0);
-	
+		
 	}
 }
