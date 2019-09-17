@@ -1,6 +1,7 @@
 //TODO
 //Add working functionality for aces
 //Begin cpu
+//add total as variable in main rather than function in deck
 
 
 

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.lang.Math;
 public class Deck
 { 
@@ -66,7 +67,18 @@ public class Deck
     	int total = 0;
     	for(int i = 0; i<cards.size(); i++) {
     		Card card = cards.get(i);
-    		if(card.rank>10) {
+    		if(card.rank==14) {
+    			Scanner input = new Scanner (System.in);
+    			System.out.println("11 or 1?");
+    			int num = input.nextInt();
+    			if(num==11) {
+    				total+=11;
+    			}
+    			else if (num==1) {
+    				total+=1;
+    			}
+    		}
+    		else if(card.rank>10) {
     			total+=10;
     		}
     		else {
