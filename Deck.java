@@ -63,7 +63,9 @@ public class Deck
     	cards.set(index2, temp);
     }
     
-    public int getTotal() {
+    
+    //Might be trash?
+ /*   public int getTotal() {
     	int total = 0;
     	for(int i = 0; i<cards.size(); i++) {
     		Card card = cards.get(i);
@@ -77,7 +79,8 @@ public class Deck
     			else if (num==1) {
     				total+=1;
     			}
-    		}
+    			input.close();
+    			}
     		else if(card.rank>10) {
     			total+=10;
     		}
@@ -89,7 +92,8 @@ public class Deck
     		total-=52;
     	}
     	return total;
-    }
+    }*/
+   
     
     //returns array list as opposed to string so indices are easier to see
     public ArrayList toArrayList() {

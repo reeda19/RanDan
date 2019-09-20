@@ -1,7 +1,8 @@
 //TODO
-//Add working functionality for aces
-//Begin cpu
-//add total as variable in main rather than function in deck
+//-Add working functionality for aces
+//-Redo count for center
+//-Begin cpu
+//-add total as variable in main rather than function in deck
 
 
 
@@ -9,6 +10,7 @@
 import java.util.Scanner;
 public class main
 { 	static Scanner input = new Scanner(System.in);
+	static int centerCount = 0;
 	public static void main(String [] args)
 	{
 	Deck player1 = new Deck();
@@ -18,6 +20,7 @@ public class main
     deal(deck, player1, player2);
     deck.dealCard(center, 0);
     System.out.println("The first card dealt is the "+center.getCard(0).toString());
+    addCenterCount(center.getCard(0));
     int player1_wins=0;
     int player2_wins=0;
     
@@ -25,14 +28,14 @@ public class main
     while (player1_wins<3 && player2_wins<3) {
     	System.out.println("Player 1 turn");
     	playerturn(player1, center, deck);
-    	if(center.getTotal()==0){
+    	if(centerCount==0){
     		player1_wins++;
     		System.out.println("Player 1 got a point!");
     		System.out.println("It is now "+player1_wins + " to " +player2_wins);
     	}
     	System.out.println("Player 2 turn");
     	playerturn(player2, center, deck);
-    	if(center.getTotal()==0){
+    	if(centerCount==0){
     		player2_wins++;
     		System.out.println("Player 2 got a point!");
     		System.out.println("It is now "+player1_wins + " to " +player2_wins);
@@ -76,7 +79,7 @@ public class main
 	public static void playerturn(Deck player, Deck center, Deck deck) {
 		player.organizeDeck();
 		
-    	System.out.println("The total count for the center is "+center.getTotal());
+    	System.out.println("The total count for the center is "+ centerCount);
 		
 		//Print players cards for viewing
 		System.out.println("Your cards are:" );
@@ -84,7 +87,30 @@ public class main
 		System.out.println("What is your move? Select a card (0-6)");
 		int num = input.nextInt();
 		player.dealCard(center, num);
+		addCenterCount(center.getCard(center.getLength()-1));
 		deck.dealCard(player,  0);
 		
+	}
+	
+	public static void addCenterCount(Card card) {
+		if(card.rank==14) {
+			System.out.println("11 or 1?");
+			int num = input.nextInt();
+			if(num==11) {
+				centerCount+=11;
+			}
+			else if (num==1) {
+				centerCount+=1;
+			}
+			}
+		else if(card.rank>10) {
+			centerCount+=10;
+		}
+		else {
+			centerCount+=card.rank;
+		}
+		while(centerCount>=52) {
+    		centerCount-=52;
+    	}
 	}
 }
