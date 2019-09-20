@@ -1,9 +1,7 @@
 //TODO
-//-Add working functionality for aces
-//-Redo count for center
-//-Begin cpu
-//-add total as variable in main rather than function in deck
-
+//Begin cpu
+//GUI?
+//Add comments
 
 
 
