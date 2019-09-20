@@ -8,6 +8,9 @@ public class Card
     this.rank = rank;
     this.suit = suit;
     }
+	
+	// toString : Card -> String
+	// Converts Card into a readable String statement
 	public String toString() {
 		String rankString="";
 		if(rank>10) {

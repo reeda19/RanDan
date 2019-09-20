@@ -1,7 +1,7 @@
-//TODO
-//Begin cpu
-//GUI?
-//Add comments
+// TODO
+// Begin cpu
+// GUI?
+// Add comments
 
 
 
@@ -22,7 +22,7 @@ public class main
     int player1_wins=0;
     int player2_wins=0;
     
-    //first to 3 wins
+    // first to 3 wins
     while (player1_wins<3 && player2_wins<3) {
     	System.out.println("Player 1 turn");
     	playerturn(player1, center, deck);
@@ -43,8 +43,8 @@ public class main
     }
 	
 	
-	
-	//Prints the cards in the deck, in order
+	// printDeck : Deck -> Console Output
+	// Prints the cards in the deck, in order
 	public static void printDeck(Deck deck) {
 		for(int i = 0; i<deck.getLength(); i++) {
 	    	System.out.println(deck.getCard(i));
@@ -52,7 +52,7 @@ public class main
 	}
 	
 	
-	
+	// createDeck : Deck -> Deck
 	//Creates and shuffles a standard 52 card deck
 	public static Deck createDeck() {
 		Deck deck = new Deck();
@@ -67,12 +67,17 @@ public class main
 	    return deck;
 	}
 	
+	// deal : Deck Deck Deck -> Deck Deck
+	// deals 7 cards from the deck to 2 players
 	public static void deal(Deck deck, Deck player1, Deck player2) {
 		for(int i = 0; i<7; i++) {
 			deck.dealCard(player1, 0);
 			deck.dealCard(player2, 0);
 		}
 	}
+	
+	// playerturn : Deck Deck Deck -> Deck
+	// Executes a player's turn, allowing them to choose a card to place in the deck
 	
 	public static void playerturn(Deck player, Deck center, Deck deck) {
 		player.organizeDeck();
@@ -90,6 +95,8 @@ public class main
 		
 	}
 	
+	// addCenterCount : Card -> int
+	// Adds card value to the total count in the center
 	public static void addCenterCount(Card card) {
 		if(card.rank==14) {
 			System.out.println("11 or 1?");
