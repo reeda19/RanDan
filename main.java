@@ -12,31 +12,31 @@ public class main
 	public static void main(String [] args)
 	{
 	Deck player1 = new Deck();
-	Deck player2 = new Deck();
+	Deck cpu = new Deck();
     Deck deck = createDeck();
     Deck center = new Deck();
-    deal(deck, player1, player2);
+    deal(deck, player1, cpu);
     deck.dealCard(center, 0);
     System.out.println("The first card dealt is the "+center.getCard(0).toString());
     addCenterCount(center.getCard(0));
     int player1_wins=0;
-    int player2_wins=0;
+    int cpu_wins=0;
     
     // first to 3 wins
-    while (player1_wins<3 && player2_wins<3) {
+    while (player1_wins<3 && cpu_wins<3) {
     	System.out.println("Player 1 turn");
     	playerturn(player1, center, deck);
     	if(centerCount==0){
     		player1_wins++;
     		System.out.println("Player 1 got a point!");
-    		System.out.println("It is now "+player1_wins + " to " +player2_wins);
+    		System.out.println("It is now " +player1_wins + " to " +cpu_wins);
     	}
-    	System.out.println("Player 2 turn");
-    	playerturn(player2, center, deck);
+    	System.out.println("CPU turn");
+    	playerturn(cpu, center, deck);
     	if(centerCount==0){
-    		player2_wins++;
-    		System.out.println("Player 2 got a point!");
-    		System.out.println("It is now "+player1_wins + " to " +player2_wins);
+    		cpu_wins++;
+    		System.out.println("CPU got a point!");
+    		System.out.println("It is now "+player1_wins + " to " +cpu_wins);
     	}
     }
 	input.close();
@@ -69,10 +69,10 @@ public class main
 	
 	// deal : Deck Deck Deck -> Deck Deck
 	// deals 7 cards from the deck to 2 players
-	public static void deal(Deck deck, Deck player1, Deck player2) {
+	public static void deal(Deck deck, Deck player1, Deck cpu) {
 		for(int i = 0; i<7; i++) {
 			deck.dealCard(player1, 0);
-			deck.dealCard(player2, 0);
+			deck.dealCard(cpu, 0);
 		}
 	}
 	
@@ -117,5 +117,12 @@ public class main
 		while(centerCount>=52) {
     		centerCount-=52;
     	}
+	}
+	
+	public static void CPUTurn(Deck cpu) {
+		switch(centerCount) {
+		case 42: 
+		
+		}
 	}
 }
