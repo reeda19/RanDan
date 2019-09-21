@@ -72,4 +72,13 @@ public class Deck
     public ArrayList toArrayList() {
     	return cards;
     }
+    
+    public int findCard(int rank) {
+    	for(int i = 0; i< cards.size(); i++) {
+    		if(cards.get(i).rank==rank) {
+    			return i;
+    		}
+    	}
+    	return -1;
+    }
     }

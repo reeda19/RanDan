@@ -1,5 +1,6 @@
 // TODO
 // Begin cpu
+// make more robust
 // GUI?
 // Add comments
 
@@ -9,13 +10,13 @@ import java.util.Scanner;
 public class main
 { 	static Scanner input = new Scanner(System.in);
 	static int centerCount = 0;
+	static Deck player1 = new Deck();
+	static Deck cpu = new Deck();
+    static Deck deck = createDeck();
+    static Deck center = new Deck();
 	public static void main(String [] args)
 	{
-	Deck player1 = new Deck();
-	Deck cpu = new Deck();
-    Deck deck = createDeck();
-    Deck center = new Deck();
-    deal(deck, player1, cpu);
+    deal();
     deck.dealCard(center, 0);
     System.out.println("The first card dealt is the "+center.getCard(0).toString());
     addCenterCount(center.getCard(0));
@@ -25,14 +26,14 @@ public class main
     // first to 3 wins
     while (player1_wins<3 && cpu_wins<3) {
     	System.out.println("Player 1 turn");
-    	playerturn(player1, center, deck);
+    	playerturn();
     	if(centerCount==0){
     		player1_wins++;
     		System.out.println("Player 1 got a point!");
     		System.out.println("It is now " +player1_wins + " to " +cpu_wins);
     	}
     	System.out.println("CPU turn");
-    	playerturn(cpu, center, deck);
+    	CPUTurn();
     	if(centerCount==0){
     		cpu_wins++;
     		System.out.println("CPU got a point!");
@@ -69,7 +70,7 @@ public class main
 	
 	// deal : Deck Deck Deck -> Deck Deck
 	// deals 7 cards from the deck to 2 players
-	public static void deal(Deck deck, Deck player1, Deck cpu) {
+	public static void deal() {
 		for(int i = 0; i<7; i++) {
 			deck.dealCard(player1, 0);
 			deck.dealCard(cpu, 0);
@@ -79,19 +80,19 @@ public class main
 	// playerturn : Deck Deck Deck -> Deck
 	// Executes a player's turn, allowing them to choose a card to place in the deck
 	
-	public static void playerturn(Deck player, Deck center, Deck deck) {
-		player.organizeDeck();
+	public static void playerturn() {
+		player1.organizeDeck();
 		
     	System.out.println("The total count for the center is "+ centerCount);
 		
 		//Print players cards for viewing
 		System.out.println("Your cards are:" );
-		System.out.println(player.toArrayList());
+		System.out.println(player1.toArrayList());
 		System.out.println("What is your move? Select a card (0-6)");
 		int num = input.nextInt();
-		player.dealCard(center, num);
+		player1.dealCard(center, num);
 		addCenterCount(center.getCard(center.getLength()-1));
-		deck.dealCard(player,  0);
+		deck.dealCard(player1,  0);
 		
 	}
 	
@@ -119,10 +120,16 @@ public class main
     	}
 	}
 	
-	public static void CPUTurn(Deck cpu) {
-		switch(centerCount) {
-		case 42: 
-		
+	public static void CPUTurn() {
+		int amountUntilWin = 52-centerCount;
+		if(amountUntilWin <= 11 && cpu.findCard(amountUntilWin)!=-1) {
+			CPUGo(cpu.findCard(amountUntilWin));
 		}
+		
+	}
+	public static void CPUGo (int index) {
+		cpu.dealCard(center, index);
+		addCenterCount(center.getCard(center.getLength()-1));
+		deck.dealCard(cpu,  0);
 	}
 }
