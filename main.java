@@ -1,5 +1,5 @@
 // TODO
-// Begin cpu
+// Better AI 
 // make more robust
 // GUI?
 // Add comments
@@ -7,6 +7,7 @@
 
 
 import java.util.Scanner;
+import java.lang.Math.*; 
 public class main
 { 	static Scanner input = new Scanner(System.in);
 	static int centerCount = 0;
@@ -122,14 +123,61 @@ public class main
 	
 	public static void CPUTurn() {
 		int amountUntilWin = 52-centerCount;
-		if(amountUntilWin <= 11 && cpu.findCard(amountUntilWin)!=-1) {
-			CPUGo(cpu.findCard(amountUntilWin));
+		int amountUntil40 = 40-centerCount;
+		int tensDigit = (int)Math.floor(centerCount/10);
+		
+		
+		switch(tensDigit) {
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		default:
+			break;
+		
+		
 		}
 		
+		/*
+		//if there is less than 11 points till 52
+		if(amountUntilWin <= 11) {
+			
+			//If there is a card that can win the game, play that card
+			if(cpu.findCard(amountUntilWin)!=-1) {
+			CPUGo(cpu.findCard(amountUntilWin));
+			}
+			else {
+				CPUGo(cpu.getLength()-1);
+				}
+		}
+		
+		//If there is a card that puts opposing player at 40, play that card
+		else if(amountUntil40 <= 11 && cpu.findCard(amountUntil40)!=-1) {
+			CPUGo(cpu.findCard(amountUntil40));
+			//If this fails, go to highest ranking card (default)
+		}
+		
+		
+		
+		//Play highest ranking card if all else fails
+		else {
+			CPUGo(cpu.getLength()-1);
+			}
+
+		*/
 	}
+	
 	public static void CPUGo (int index) {
 		cpu.dealCard(center, index);
 		addCenterCount(center.getCard(center.getLength()-1));
-		deck.dealCard(cpu,  0);
+		deck.dealCard(cpu, 0);
 	}
 }
