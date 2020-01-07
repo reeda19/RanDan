@@ -13,8 +13,11 @@ public class Card
 	// Converts Card into a readable String statement
 	public String toString() {
 		String rankString="";
-		if(rank>10) {
+		if(rank > 10 || rank == 1) {
 			switch(rank) {
+				case 1:
+					rankString = "ace";
+					break;
 				case 11:
 					rankString = "jack";
 					break;
@@ -24,9 +27,7 @@ public class Card
 				case 13:
 					rankString = "king";
 					break;
-				case 14:
-					rankString = "ace";
-					break;
+
 			}
 		}
 		else {
